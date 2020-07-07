@@ -1,13 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2020/6/24 0024
-  Time: 下午 15:36
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <meta charset="utf-8">
     <title>Welcome Register!</title>
     <script src="resources/js/usercheck.js"></script>
 </head>
@@ -23,12 +16,12 @@
             </tr>
             <tr>
                 <td>请输入密码</td>
-                <td><input id="password" name="password" type="password" maxlength="16"></td>
+                <td><input id="pwd" name="pwd" type="password" maxlength="16"></td>
                 <td>限长16需包含字母数字字符</td>
             </tr>
             <tr>
                 <td>请重复密码</td>
-                <td><input id="password1" type="password"></td>
+                <td><input id="pwd1" type="password"></td>
                 <td></td>
             </tr>
             <tr>
@@ -38,8 +31,8 @@
             </tr>
             <tr>
                 <td>验证码</td>
-                <td><input id="randCode" name="rand" type="text"></td>
-                <td ><img src="randCode"></td>
+                <td><input id="cc" name="cc" type="text"></td>
+                <td><img src="randCode"></td>
             </tr>
         </table>
         <input name ="model" type="submit" value="注册">

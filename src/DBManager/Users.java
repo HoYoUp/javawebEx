@@ -33,8 +33,9 @@ public class Users {
             stat.setString(1,name);
             stat.setString(2,password);
             ResultSet result = stat.executeQuery();
-            result.next();
-            String r = result.getString(1);
+            String r = "";
+            if(result.next())
+                r = result.getString(1);
             stat.close();
             mysql.connect.close();
             return r;

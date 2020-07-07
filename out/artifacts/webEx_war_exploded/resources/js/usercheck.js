@@ -1,18 +1,22 @@
 function check() {
     var name = document.getElementById("name").value;
-    var password = document.getElementById("password").value;
-
+    var pwd = document.getElementById("pwd").value;
+    var code = document.getElementById("cc").value;
     if(name==""||name==null){
         alert("用户名不能为空");
         return false;
     }
-
-    else if(password==""||password==null){
+    else if(pwd==""||pwd==null){
         alert("密码不能为空");
         return false;
     }
-    else
+    else if(code==""||code==null){
+        alert("验证码不能为空");
+        return false;
+    }
+    else{
         return true;
+    }
 
 }
 function isPhone(phone) {
@@ -24,7 +28,7 @@ function isPhone(phone) {
     }
 }
 //校验密码强度---沒有匹配到以下級別就提示
-function checkPassWord(value){
+function checkpwd(value){
     // 0： 表示第一个级别 1：表示第二个级别 2：表示第三个级别
     // 3： 表示第四个级别 4：表示第五个级别
     var arr=0;
@@ -45,9 +49,9 @@ function checkPassWord(value){
     }
     return (arr>=4)?true:false;
 }
-function okPassword(password) {
+function okpwd(pwd) {
     var pwdRegex = new RegExp('(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[\W]).{8,16}');
-    if(password.match(pwdRegex)){
+    if(pwd.match(pwdRegex)){
         return true;
     }
     else{
@@ -56,15 +60,15 @@ function okPassword(password) {
     }
 }
 function checkRegister(){
-    var password1 = document.getElementById("password1").value;
-    var password = document.getElementById("password").value;
+    var pwd1 = document.getElementById("pwd1").value;
+    var pwd = document.getElementById("pwd").value;
     if(check()){
-            if(password!==password1){
+            if(pwd!==pwd1){
                 alert("两次密码输入不一致");
                 return false;
             }
             else{
-                if(okPassword(password)) {
+                if(okpwd(pwd)) {
                     var phone = document.getElementById("phone").value;
                     if(phone!==null||phone!==""){
                         return isPhone(phone);
@@ -75,8 +79,6 @@ function checkRegister(){
                     }
                 }
         }
-
-
     }
 
 }

@@ -52,12 +52,4 @@ public class goodsManager extends HttpServlet{
               e.printStackTrace();
           }
      }
-//     <servlet>
-//        <servlet-name>init</servlet-name>
-//        <servlet-class>DBManager.goodsManager</servlet-class>
-//    </servlet>
-//    <servlet-mapping>
-//        <servlet-name>init</servlet-name>
-//        <url-pattern>/</url-pattern>
-//    </servlet-mapping>
 }

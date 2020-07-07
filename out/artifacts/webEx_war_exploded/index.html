@@ -6,19 +6,26 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>My First Page</title>
+    <title>Login</title>
     <link rel="stylesheet" href="resources/css/bootstrap.min.css">
     <script src="resources/js/usercheck.js">
 
     </script>
-
+    <style>
+        .LTitle{
+            width: 100%;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 <div class="container-fluid">
-    <div class="row" style="text-align: center;">
-        <div class="col-md-7 offset-md-4">
-            <label>Welcome To Our Market</label>
-
+    <div class="row" style="text-align: center;margin-top: 5%;">
+        <div class="col-md-6 offset-md-3">
+            <div class="row" >
+                <h1 class="LTitle">欢迎来到我们的商城</h1>
+            </div>
+            <div class="row">
                 <form action="userManager.jsp" method="GET" onsubmit="check()">
                     <table border="1">
                         <tr>
@@ -28,22 +35,21 @@
                         </tr>
                         <tr>
                             <td>密码</td>
-                            <td><input id="password" name="password" type="password"></td>
-                            <td><label>忘记密码</label></td>
+                            <td><input id="pwd" name="pwd" type="password"></td>
+                            <td><a href="reset">忘记密码</a></td>
                         </tr>
                         <tr>
                             <td>验证码</td>
-                            <td><input type="text"></td>
-                            <td id="checkCode"><img src="randCode"></td>
+                            <td><input id="cc" name="cc" type="text"></td>
+                            <td><img src="randCode"></td>
                         </tr>
                     </table>
                     <input name="model" type="submit" value="登录">
-                    <button><a href="register.jsp">注册</a></button>
+                    <button><a href="register.html">注册</a></button>
                 </form>
-
+            </div>
         </div>
     </div>
-
 </div>
 </body>
 </html>

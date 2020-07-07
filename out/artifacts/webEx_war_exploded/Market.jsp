@@ -27,6 +27,9 @@
         .basictext{
             text-align: center;
         }
+        .tabcap{
+            caption-side: top;
+        }
     </style>
 </head>
 
@@ -37,7 +40,7 @@
             <h1>Easier Shopping Easier Life</h1>
             <label id="an" class="announce">通知</label>
             <table border="1">
-                <caption>商品列表</caption>
+                <caption class="tabcap">商品列表</caption>
                 <tr>
                     <td>谷物</td>
                     <td>水果</td>
@@ -45,7 +48,7 @@
             </table>
 
                 <table border="1">
-                    <caption>详细列表</caption>
+                    <caption class="tabcap">详细列表</caption>
                     <tr>
                         <td>排序</td>
                         <td><button onclick="order(1)">销量</button></td>
@@ -60,17 +63,16 @@
                         <td>单位</td>
                     </tr>
                     <%
-                        // System.out.println("data "+(String)request.getParameter("list"));
                          goods mysql = new goods();
                          String[] goodkinds = mysql.getall().split(",+");
                          for (int i = 0; i < goodkinds.length; i++) {
-                             String[] m = goodkinds[i].split(" ");
-                             out.print("<tr><td><img class=\"img\" src=\"" + m[4] + "\"></td>");
-                             out.print("<td rowspan=\"2\">" + m[1] + "</td>");
-                             out.print("<td rowspan=\"2\">" + m[5] + "</td><td rowspan=\"2\">" + m[2] + "</td>");
-                             out.print("<td rowspan=\"2\">" + m[3] + "</td>");
-                             out.print("<td rowspan=\"2\"><button><a href=\"goodsManager.jsp?type=up&id="+m[6]+"\">BUY</a></button></td></tr>");
-                             out.print("<tr><td>" + m[0] + "</td></tr>");
+                             String[] m = goodkinds[i].split("\\s+");
+                             out.print("<tr><td><img class=\"img\" src=\"" + m[4] + "\"></td>\n");
+                             out.print("<td rowspan=\"2\">" + m[1] + "</td>\n");
+                             out.print("<td rowspan=\"2\">" + m[5] + "</td><td rowspan=\"2\">" + m[2] + "</td>\n");
+                             out.print("<td rowspan=\"2\">" + m[3] + "</td>\n");
+                             out.print("<td rowspan=\"2\"><button><a href=\"goodsManager.jsp?id="+m[6].toString()+"\">BUY</a></button></td></tr>\n");
+                             out.print("<tr><td>" + m[0] + "</td></tr>\n");
                          }
                     %>
                 </table>
@@ -78,7 +80,6 @@
                 <a href="GoodsCar.jsp">我的购物车</a>
             </div>
             <div>
-
                 <label>Write By ZB </label>
             </div>
 

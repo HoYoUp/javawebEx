@@ -17,14 +17,16 @@
         char f = '0';
         String m = request.getParameter("id");
         while (enumeration.hasMoreElements()) {
+
             // 获取session键值
             String name = enumeration.nextElement().toString();
-            System.out.println("sesseion name "+name);
-            if(name=="list"){
+            if(name.equals("list")){
 //                Map<String,Integer> last = (HashMap<String ,Integer>)session.getAttribute("list");
 //                last.put(m,1);
-                String r = (String)session.getAttribute("list");
-                session.setAttribute("list",r+" "+m);
+                String r = (String)session.getAttribute("list")+" "+m;
+
+                session.setAttribute("list",r);
+                System.out.println("orderred "+r);
                 f='1';
                 break;
             }
@@ -33,7 +35,7 @@
 //            Map<String,Integer> last = new HashMap<String,Integer>();
 //            last.put(m,1);
 //            session.setAttribute("list",last);
-            session.setAttribute("list","");
+            session.setAttribute("list",m);
         }
         response.sendRedirect("Market.jsp");
 

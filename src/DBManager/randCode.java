@@ -23,16 +23,16 @@ public class randCode extends HttpServlet{
         response.setCharacterEncoding("UTF-8");
         BufferedImage code =  new BufferedImage(60,45,BufferedImage.TYPE_INT_RGB);
         Graphics g = code.getGraphics();
-        g.setColor(new Color(240,230,140));
+        g.setColor(new Color(255,255,255));
         g.fillRect(0,0,60,45);
         char model [] = "abcdefghijklmnopqrstuvwxyz1234567890".toCharArray();
         StringBuffer record = new StringBuffer();
         Random r = new Random();
         int l = model.length;
+        g.setColor(new Color(0,0,0));
         for(int i=0;i<4;i++){
             int rand = r.nextInt(l);
-            g.setColor(new Color(r.nextInt(255),r.nextInt(255),r.nextInt(255)));
-            g.drawString(model[rand]+"",i*10+9,10);
+            g.drawString(model[rand]+"",i*10+9,20);
             record.append(model[rand]);
         }
         request.getSession().setAttribute("picCode",record.toString());

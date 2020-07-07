@@ -11,10 +11,8 @@
             var items = document.getElementsByClassName("sum");
             var sum = 0;
             for(var i=0;i<items.length;i++){
-                console.log(items[i].innerText)
                 sum+=parseFloat(items[i].innerText);
             }
-
             document.getElementById("sum").innerText=sum.toString();
         }
         function change(id,type) {
@@ -63,19 +61,20 @@
                     String [] goodkinds = mysql.getPart(s).split(",+");
                     float sum = 0;
                     for(int i=0;i<goodkinds.length;i++){
-                        String [] m = goodkinds[i].split(" ");
+                        System.out.println(goodkinds[i]);
+                        String [] m = goodkinds[i].split("\\s+");
                         sum+=Float.parseFloat(m[2]);
-                        out.print("<tr><td><img class=\"img\" src=\""+m[0]+"\"></td>");
-                        out.print("<td rowspan=\"2\" id=\"p"+i+"\">"+m[2]+"</td>");
-                        out.print("<td rowspan=\"2\">"+m[3]+"</td>");
-                        out.print("<td rowspan=\"2\"><button id=\""+i+"\" onclick=\"change(id,\'dec\')\">-</button>");
-                        out.print("<input id=\"id"+i+"\" type=\"text\" value=\"1\">");
-                        out.print("<button id=\""+i+"\" onclick=\"change(id,\'add\')\">+</button></td>");
-                        out.print("<td rowspan=\"2\"><lable id=\"s"+i+"\" class=\"sum\">"+m[2]+"</label></td>");
-                        out.print("<tr><td>"+m[1]+"</td></tr>");
+                        out.print("<tr><td><img class=\"img\" src=\""+m[0]+"\"></td>\n");
+                        out.print("<td rowspan=\"2\" id=\"p"+i+"\">"+m[2]+"</td>\n");
+                        out.print("<td rowspan=\"2\">"+m[3]+"</td>\n");
+                        out.print("<td rowspan=\"2\"><button id=\""+i+"\" onclick=\"change(id,\'dec\')\">-</button>\n");
+                        out.print("<input id=\"id"+i+"\" type=\"text\" value=\"1\">\n");
+                        out.print("<button id=\""+i+"\" onclick=\"change(id,\'add\')\">+</button></td>\n");
+                        out.print("<td rowspan=\"2\"><lable id=\"s"+i+"\" class=\"sum\">"+m[2]+"</label></td>\n");
+                        out.print("<tr><td>"+m[1]+"</td></tr\n>");
                     }
-                    out.print("<tr><td colspan=\"2\">总价</td>");
-                    out.print("<td id=\"sum\">"+sum+"</td><td><button>购买</button></td></tr>");
+                    out.print("<tr><td colspan=\"2\">总价</td>\n");
+                    out.print("<td id=\"sum\">"+sum+"</td><td><button>购买</button></td></tr>\n");
                 %>
 
             </table>

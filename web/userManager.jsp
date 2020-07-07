@@ -10,23 +10,29 @@
 <%@ page import="DBManager.Users" %>
 <%
     String name = request.getParameter("name");
-    String password = request.getParameter("password");
+    String pwd = request.getParameter("pwd");
     String model = request.getParameter("model");
-
-    if(model.equals("登录")){
-        Users user = new Users(name,password,"");
-        String r = user.checkuser();
-        if(r!=null){
-            session.setAttribute("userId",r);
-            response.sendRedirect("Market.jsp");
+    String code = request.getParameter("cc");
+    String reference =(String)session.getAttribute("picCode");
+    char f = '0';
+    if(code.equals(reference)){         //验证随机码
+        if(model.equals("登录")){
+            Users user = new Users(name,pwd.,"");
+            String r = user.checkuser();
+            if(r!=null){
+                session.setAttribute("userId",r);
+                f='1';
+            }
         }
-        else
-            response.sendRedirect("index.html");
+        else{
+            String phone = request.getParameter("phone");
+            Users user = new Users(name,pwd,phone);
+            user.adduser();
+        }
     }
-    else{
-        String phone = request.getParameter("phone");
-        Users user = new Users(name,password,phone);
-        user.adduser();
+    if(f=='0')
         response.sendRedirect("index.html");
-    }
+    else if(f=='1')
+        response.sendRedirect("Market.jsp");
+    session.removeAttribute("picCode");
 %>
