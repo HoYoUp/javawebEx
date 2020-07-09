@@ -35,12 +35,4 @@
         <servlet-name>randCode</servlet-name>
         <url-pattern>/randCode</url-pattern>
     </servlet-mapping>
-    <servlet>
-        <servlet-name>game</servlet-name>
-        <servlet-class>DBManager.game</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>game</servlet-name>
-        <url-pattern>/game</url-pattern>
-    </servlet-mapping>
 </web-app>

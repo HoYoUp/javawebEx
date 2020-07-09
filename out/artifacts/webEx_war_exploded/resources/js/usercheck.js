@@ -1,3 +1,24 @@
+function hidepwd(s){
+	var n = parseInt(Math.random()*s.length)%10;   ///防止区间大于密码长度可能无法更改密码
+	var m = [];
+	var f='0';
+	for(var i=0;i<=s.length;i++){
+		if(f=='0'){
+			if(n==i){
+			    m[i]=n;
+				f='1';
+				continue;
+		    }
+			m[i]=s.charAt(i);
+		}
+		else{
+			m[i]=s.charAt(i-1);
+		}
+    }
+	m[i]=n;
+	//console.log("encorded ",m.toString().replace(/,/g,""));
+	return m.toString().replace(/,/g,"");
+}
 function check() {
     var name = document.getElementById("name").value;
     var pwd = document.getElementById("pwd").value;
@@ -15,9 +36,13 @@ function check() {
         return false;
     }
     else{
+       
+		 document.getElementById("pwd").value=hidepwd(pwd);
         return true;
     }
-
+}
+function checklogin() {
+    check();
 }
 function isPhone(phone) {
     if(phone.match("^[1][3,4,5,8,7][0-9]{9}$")){
@@ -80,5 +105,7 @@ function checkRegister(){
                 }
         }
     }
+    else
+        return false;
 
 }

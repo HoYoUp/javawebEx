@@ -37,7 +37,11 @@
 <div class="container-fluid">
     <div class="row basictext">
         <div class="offset-md-4">
-            <h1>Easier Shopping Easier Life</h1>
+            <h2>Easier Shopping Easier Life</h2>
+            <div>
+                <a href="login.html">登录</a>
+                <a href="GoodsCar.jsp">我的购物车</a>
+            </div>
             <label id="an" class="announce">通知</label>
             <table border="1">
                 <caption class="tabcap">商品列表</caption>
@@ -46,8 +50,7 @@
                     <td>水果</td>
                 </tr>
             </table>
-
-                <table border="1">
+            <table border="1">
                     <caption class="tabcap">详细列表</caption>
                     <tr>
                         <td>排序</td>
@@ -66,7 +69,7 @@
                          goods mysql = new goods();
                          String[] goodkinds = mysql.getall().split(",+");
                          for (int i = 0; i < goodkinds.length; i++) {
-                             String[] m = goodkinds[i].split("\\s+");
+                             String[] m = goodkinds[i].split("#+");
                              out.print("<tr><td><img class=\"img\" src=\"" + m[4] + "\"></td>\n");
                              out.print("<td rowspan=\"2\">" + m[1] + "</td>\n");
                              out.print("<td rowspan=\"2\">" + m[5] + "</td><td rowspan=\"2\">" + m[2] + "</td>\n");
@@ -75,10 +78,7 @@
                              out.print("<tr><td>" + m[0] + "</td></tr>\n");
                          }
                     %>
-                </table>
-            <div>
-                <a href="GoodsCar.jsp">我的购物车</a>
-            </div>
+            </table>
             <div>
                 <label>Write By ZB </label>
             </div>

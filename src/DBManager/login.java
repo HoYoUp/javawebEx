@@ -48,10 +48,10 @@ public class login extends HttpServlet {
               connect.close();
               if(id!=""){
                  // response.sendRedirect("goodsManager?userId="+id);
-                  response.sendRedirect("Market.jsp");
+                  response.sendRedirect("index.jsp");
               }
               else {
-                  response.sendRedirect("index.html");
+                  response.sendRedirect("login.html");
               }
 
           }

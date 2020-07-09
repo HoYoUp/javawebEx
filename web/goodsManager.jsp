@@ -37,7 +37,7 @@
 //            session.setAttribute("list",last);
             session.setAttribute("list",m);
         }
-        response.sendRedirect("Market.jsp");
+        response.sendRedirect("index.jsp");
 
 
 %>

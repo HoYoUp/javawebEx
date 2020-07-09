@@ -27,6 +27,9 @@ public class Users {
             e.printStackTrace();
         }
     }
+    public boolean addMoney(){
+        return false;
+    }
     public String checkuser(){
         try{
             PreparedStatement stat = mysql.connect.prepareStatement("SELECT id from user WHERE name=? AND pwd=?");

@@ -41,7 +41,7 @@
 <body>
 <div class="container" style="text-align: center">
     <div class="row">
-        <div class="offset-md-4">
+        <div class="offset-md-3">
             <h1>Easier Shopping Easier Life</h1>
             <label id="an" class="announce">通知</label>
 
@@ -62,7 +62,7 @@
                     float sum = 0;
                     for(int i=0;i<goodkinds.length;i++){
                         System.out.println(goodkinds[i]);
-                        String [] m = goodkinds[i].split("\\s+");
+                        String [] m = goodkinds[i].split("#+");
                         sum+=Float.parseFloat(m[2]);
                         out.print("<tr><td><img class=\"img\" src=\""+m[0]+"\"></td>\n");
                         out.print("<td rowspan=\"2\" id=\"p"+i+"\">"+m[2]+"</td>\n");
@@ -80,7 +80,6 @@
             </table>
 
             <div>
-
                 <label>Write By ZB </label>
             </div>
         </div>
