@@ -17,15 +17,44 @@
         }
         function change(id,type) {
             var goal = document.getElementById("id"+id);
-            var number = 0;
+            var number = 0,v=parseInt(goal.value);
             if(type==="add")
-                number = parseInt(goal.value)+1;
-            else
-                number = parseInt(goal.value)-1;
+                number = v+1;
+            else{
+                if(v>0)
+                  number = v-1;
+                else
+                    alert("不能再减了");
+            }
             var price = document.getElementById("p"+id).innerText;
             goal.value = number.toString();
             document.getElementById("s"+id).innerText=(number*parseFloat(price)).toString();
             calSum();
+        }
+        function buy(){
+            var inputs = document.getElementsByTagName("input");
+            var sums = document.getElementsByTagName("label");
+            var sum1 = document.getElementById("sum").innerText;
+            var s = "";
+            for(var i=0;i<inputs.length;i++){
+                s+=inputs[i].value;
+                s+=" ";
+                s+=sums[i].innerText;
+                s+=" "
+            }
+            console.log("goods numbers ",s);
+//            window.location.replace("gManager.jsp?s="+sum1+"&n="+s);
+            window.location.replace("gManager.jsp?s="+sum1);
+        }
+        function isbuy() {
+            var isbuy = confirm("确定付款吗？");
+            if(isbuy==true){
+                 var password = prompt("请输入付款密码");
+                alert(password);
+            }
+            else{
+                alert("再想想吧");
+            }
         }
     </script>
     <style>
@@ -43,8 +72,6 @@
     <div class="row">
         <div class="offset-md-3">
             <h1>Easier Shopping Easier Life</h1>
-            <label id="an" class="announce">通知</label>
-
             <table border="1">
                 <caption>已选商品列表</caption>
                 <tr>
@@ -56,25 +83,31 @@
                 </tr>
                 <%
                     //String car =(String)request.getParameter("buylist");
-                    goods mysql = new goods();
-                    String s = session.getAttribute("list").toString();
-                    String [] goodkinds = mysql.getPart(s).split(",+");
-                    float sum = 0;
-                    for(int i=0;i<goodkinds.length;i++){
-                        System.out.println(goodkinds[i]);
-                        String [] m = goodkinds[i].split("#+");
-                        sum+=Float.parseFloat(m[2]);
-                        out.print("<tr><td><img class=\"img\" src=\""+m[0]+"\"></td>\n");
-                        out.print("<td rowspan=\"2\" id=\"p"+i+"\">"+m[2]+"</td>\n");
-                        out.print("<td rowspan=\"2\">"+m[3]+"</td>\n");
-                        out.print("<td rowspan=\"2\"><button id=\""+i+"\" onclick=\"change(id,\'dec\')\">-</button>\n");
-                        out.print("<input id=\"id"+i+"\" type=\"text\" value=\"1\">\n");
-                        out.print("<button id=\""+i+"\" onclick=\"change(id,\'add\')\">+</button></td>\n");
-                        out.print("<td rowspan=\"2\"><lable id=\"s"+i+"\" class=\"sum\">"+m[2]+"</label></td>\n");
-                        out.print("<tr><td>"+m[1]+"</td></tr\n>");
+                    String s = (String)session.getAttribute("list");
+                    if(s!=null){
+                        goods mysql = new goods();
+                        String [] goodkinds = mysql.getPart(s).split(",+");
+                        float sum = 0;
+                        for(int i=0;i<goodkinds.length;i++){
+                            String [] m = goodkinds[i].split("#+");
+                            sum+=Float.parseFloat(m[2]);
+                            out.print("<tr><td><img class=\"img\" src=\"resources/img/"+m[0]+"\"></td>\n");
+                            out.print("<td rowspan=\"2\" id=\"p"+i+"\">"+m[2]+"</td>\n");
+                            out.print("<td rowspan=\"2\">"+m[3]+"</td>\n");
+                            out.print("<td rowspan=\"2\"><button id=\""+i+"\" onclick=\"change(id,\'dec\')\">-</button>\n");
+                            out.print("<input id=\"id"+i+"\" type=\"text\" value=\"1\">\n");
+                            out.print("<button id=\""+i+"\" onclick=\"change(id,\'add\')\">+</button></td>\n");
+                            out.print("<td rowspan=\"2\"><label id=\"s"+i+"\" class=\"sum\">"+m[2]+"</label></td>\n");
+                            out.print("<tr><td>"+m[1]+"</td></tr\n>");
+                        }
+                        out.print("<tr><td colspan=\"2\">总价</td>\n");
+                        out.print("<td id=\"sum\">"+sum+"</td><td>\n");
+                        out.print("<button onclick=\"buy()\">购买</button></td></tr>\n");
                     }
-                    out.print("<tr><td colspan=\"2\">总价</td>\n");
-                    out.print("<td id=\"sum\">"+sum+"</td><td><button>购买</button></td></tr>\n");
+                    else{
+                        out.print("<tr><td colspan=\"5\">空空如也，去首页看看吧</td></tr>");
+                    }
+
                 %>
 
             </table>

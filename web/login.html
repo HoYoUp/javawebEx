@@ -21,12 +21,12 @@
 <body>
 <div class="container-fluid">
     <div class="row" style="text-align: center;margin-top: 5%;">
-        <div class="col-md-6 offset-md-3">
+        <div class="offset-md-3">
             <div class="row" >
                 <h2 class="LTitle">欢迎来到我们的商城</h2>
             </div>
             <div class="row">
-                <form action="userManager.jsp" method="GET" onsubmit="checklogin()">
+                <form action="uManager.jsp" method="GET" onsubmit="checklogin()">
                     <table border="1">
                         <tr>
                             <td>用户名</td>
@@ -35,12 +35,12 @@
                         </tr>
                         <tr>
                             <td>密码</td>
-                            <td><input id="pwd" name="pwd" type="password"></td>
-                            <td><a href="reset">忘记密码</a></td>
+                            <td><input id="pwd" name="pwd" type="password" maxlength="16"></td>
+                            <td>忘记密码</td>
                         </tr>
                         <tr>
                             <td>验证码</td>
-                            <td><input id="cc" name="cc" type="text"></td>
+                            <td><input id="cc" name="cc" type="text" placeholder="验证码"></td>
                             <td><img src="randCode"></td>
                         </tr>
                     </table>

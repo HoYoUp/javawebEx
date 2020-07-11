@@ -3,40 +3,51 @@
     <meta charset="utf-8">
     <title>Welcome Register!</title>
     <script src="resources/js/usercheck.js"></script>
+    <link href="resources/css/bootstrap.min.css">
 </head>
 <body>
-<div class="main">
-    <label>Welcome To Be A Member Of Our Market</label>
-    <form action="userManager.jsp" method="GET" onsubmit="checkRegister()">
-        <table border="1">
-            <tr>
-                <td>请输入用户名</td>
-                <td><input id="name" name="name" type="text"></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>请输入密码</td>
-                <td><input id="pwd" name="pwd" type="password" maxlength="16"></td>
-                <td>限长16需包含字母数字字符</td>
-            </tr>
-            <tr>
-                <td>请重复密码</td>
-                <td><input id="pwd1" type="password"></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>请输入手机号</td>
-                <td><input id="phone" name="phone" type="text" maxlength="11"></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>验证码</td>
-                <td><input id="cc" name="cc" type="text"></td>
-                <td><img src="randCode"></td>
-            </tr>
-        </table>
-        <input name ="model" type="submit" value="注册">
-    </form>
+<div class="container-fluid">
+    <div class="row">
+        <div class="offset-md-3">
+            <div class="row">
+                <h2>欢迎成为易购商城的一员</h2>
+            </div>
+            <div class="row">
+                <form action="uManager.jsp" method="GET" onsubmit="checkRegister()">
+                    <table border="1">
+                        <tr>
+                            <td>请输入用户名</td>
+                            <td><input id="name" name="name" type="text"></td>
+                        </tr>
+                        <tr>
+                            <td>请输入密码</td>
+                            <td><input id="pwd" name="pwd" type="password" ></td>
+                        </tr>
+                        <tr>
+                            <td>请重复密码</td>
+                            <td><input id="pwd1" type="password" ></td>
+
+                        </tr>
+                        <tr>
+                            <td>请输入手机号</td>
+                            <td><input id="phone" name="phone" type="text" maxlength="11"></td>
+                        </tr>
+                        <tr>
+                            <td>请输入支付密码</td>
+                            <td><input id="pay" name="pay" type="text" maxlength="11"></td>
+                        </tr>
+                        <tr>
+                            <td><input id="cc" name="cc" type="text" placeholder="验证码"></td>
+                            <td><img src="randCode"></td>
+                        </tr>
+                    </table>
+                    <input name ="model" type="submit" value="注册">
+                </form>
+            </div>
+
+        </div>
+    </div>
+
 </div>
 </body>
 </html>
